@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Navbar, Nav, Container, Badge , NavDropdown} from 'react-bootstrap';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/usersApiSlice';

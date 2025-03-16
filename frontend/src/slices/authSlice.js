@@ -11,13 +11,18 @@ const authSlice = createSlice({
         setCredentials: (state, action) => {
             state.userInfo = action.payload;
             localStorage.setItem("userInfo", JSON.stringify(action.payload));
+
+            const savedAddress = localStorage.getItem(`shippingAddress_${action.payload._id}`);
+            state.shippingAddress = savedAddress ? JSON.parse(savedAddress) : {};
         },
-        logout: (state, action) => {
-            state.userInfo = null;
+        logout: (state) => {
             localStorage.removeItem("userInfo");
-        }, 
-    }
+            localStorage.removeItem("cartItems");
+            state.userInfo = null;
+            state.shippingAddress = {}; 
+        },
+    },
 });
 
-export const { setCredentials , logout} = authSlice.actions;
+export const { setCredentials, logout } = authSlice.actions;
 export default authSlice.reducer;
